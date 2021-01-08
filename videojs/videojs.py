@@ -19,10 +19,6 @@ from webob import Response
 import json
 import hashlib
 
-def resource_string(path):
-    """Handy helper for getting resources from our kit."""
-    data = pkg_resources.resource_string(__name__, path)
-    return data.decode()
 
 @XBlock.needs('i18n')
 @XBlock.wants('completion')
@@ -194,7 +190,7 @@ class videojsXBlock(XBlock):
             if not os.path.exists(path):
                 os.makedirs(path)
 
-            name = hashlib.sha256(subtitle_text).hexdigest() + ".vtt"
+            name = hashlib.sha256(str.encode(subtitle_text)).hexdigest() + ".vtt"
             filepath = path + name
             url = settings.MEDIA_URL + 'subtitles/' + name
 
