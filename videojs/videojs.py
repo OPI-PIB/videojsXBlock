@@ -3,7 +3,7 @@
 import codecs
 import os
 import uuid
-from HTMLParser import HTMLParser
+from html.parser import HTMLParser
 
 import pkg_resources
 from django.conf import settings
