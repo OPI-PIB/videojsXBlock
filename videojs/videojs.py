@@ -3,7 +3,7 @@
 import codecs
 import os
 import uuid
-from HTMLParser import HTMLParser
+from html.parser import HTMLParser
 
 import pkg_resources
 from django.conf import settings
@@ -18,6 +18,7 @@ from webob import Response
 import json
 import hashlib
 from django.utils import translation
+from six import text_type
 
 _ = lambda text: text
 loader = ResourceLoader(__name__)
@@ -86,13 +87,13 @@ class videojsXBlock(XBlock):
         """
         resource_content = pkg_resources.resource_string(__name__,
                                                          resource_path)
-        return unicode(resource_content)
+        return text_type(resource_content)
 
     def render_template(self, template_path, context={}):
         """
         Evaluate a template by resource path, applying the provided context
         """
-        template_str = self.load_resource(template_path)
+        template_str = loader.load_unicode(template_path)
         return Template(template_str).render(Context(context))
 
     '''
@@ -130,13 +131,13 @@ class videojsXBlock(XBlock):
             i18n_service=self.runtime.service(self, "i18n"),
         ))
 
-        frag.add_css(self.load_resource("static/css/video-js.css"))
-        frag.add_css(self.load_resource("static/css/qualityselector.css"))
-        frag.add_javascript(self.load_resource("static/js/video.js"))
-        frag.add_javascript(self.load_resource("static/js/pl.js"))
-        frag.add_javascript(self.load_resource("static/js/qualityselector.js"))
-        frag.add_javascript(self.load_resource("static/js/youtube.js"))
-        frag.add_javascript(self.load_resource("static/js/videojs_view.js"))
+        frag.add_css(loader.load_unicode("static/css/video-js.css"))
+        frag.add_css(loader.load_unicode("static/css/qualityselector.css"))
+        frag.add_javascript(loader.load_unicode("static/js/video.js"))
+        frag.add_javascript(loader.load_unicode("static/js/pl.js"))
+        frag.add_javascript(loader.load_unicode("static/js/qualityselector.js"))
+        frag.add_javascript(loader.load_unicode("static/js/youtube.js"))
+        frag.add_javascript(loader.load_unicode("static/js/videojs_view.js"))
         frag.add_javascript(self.get_translation_content())
 
         frag.initialize_js('videojsXBlockInitView')
@@ -176,7 +177,7 @@ class videojsXBlock(XBlock):
         ))
 
         frag.add_javascript(self.get_translation_content())
-        frag.add_javascript(self.load_resource("static/js/videojs_edit.js"))
+        frag.add_javascript(loader.load_unicode("static/js/videojs_edit.js"))
         frag.initialize_js('videojsXBlockInitStudio')
         return frag
 
