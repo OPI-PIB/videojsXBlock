@@ -18,6 +18,7 @@ from webob import Response
 import json
 import hashlib
 from django.utils import translation
+from six import text_type
 
 _ = lambda text: text
 loader = ResourceLoader(__name__)
@@ -86,7 +87,7 @@ class videojsXBlock(XBlock):
         """
         resource_content = pkg_resources.resource_string(__name__,
                                                          resource_path)
-        return resource_content
+        return text_type(resource_content)
 
     def render_template(self, template_path, context={}):
         """
