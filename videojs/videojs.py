@@ -93,7 +93,7 @@ class videojsXBlock(XBlock):
         """
         Evaluate a template by resource path, applying the provided context
         """
-        template_str = self.load_resource(template_path)
+        template_str = loader.load_unicode(template_path)
         return Template(template_str).render(Context(context))
 
     '''
@@ -131,13 +131,13 @@ class videojsXBlock(XBlock):
             i18n_service=self.runtime.service(self, "i18n"),
         ))
 
-        frag.add_css(self.load_resource("static/css/video-js.css"))
-        frag.add_css(self.load_resource("static/css/qualityselector.css"))
-        frag.add_javascript(self.load_resource("static/js/video.js"))
-        frag.add_javascript(self.load_resource("static/js/pl.js"))
-        frag.add_javascript(self.load_resource("static/js/qualityselector.js"))
-        frag.add_javascript(self.load_resource("static/js/youtube.js"))
-        frag.add_javascript(self.load_resource("static/js/videojs_view.js"))
+        frag.add_css(loader.load_unicode("static/css/video-js.css"))
+        frag.add_css(loader.load_unicode("static/css/qualityselector.css"))
+        frag.add_javascript(loader.load_unicode("static/js/video.js"))
+        frag.add_javascript(loader.load_unicode("static/js/pl.js"))
+        frag.add_javascript(loader.load_unicode("static/js/qualityselector.js"))
+        frag.add_javascript(loader.load_unicode("static/js/youtube.js"))
+        frag.add_javascript(loader.load_unicode("static/js/videojs_view.js"))
         frag.add_javascript(self.get_translation_content())
 
         frag.initialize_js('videojsXBlockInitView')
@@ -177,7 +177,7 @@ class videojsXBlock(XBlock):
         ))
 
         frag.add_javascript(self.get_translation_content())
-        frag.add_javascript(self.load_resource("static/js/videojs_edit.js"))
+        frag.add_javascript(loader.load_unicode("static/js/videojs_edit.js"))
         frag.initialize_js('videojsXBlockInitStudio')
         return frag
 
