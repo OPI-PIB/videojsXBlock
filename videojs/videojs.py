@@ -219,7 +219,7 @@ class videojsXBlock(XBlock):
             if not os.path.exists(path):
                 os.makedirs(path)
 
-            name = hashlib.sha256(subtitle_text).hexdigest() + ".vtt"
+            name = hashlib.sha256(subtitle_text.encode("utf-8")).hexdigest() + ".vtt"
             filepath = path + name
             url = settings.MEDIA_URL + 'subtitles/' + name
 
