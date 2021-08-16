@@ -63,7 +63,7 @@ class videojsXBlock(XBlock):
     subtitle_text = String(display_name=_("Subtitle - Polish"),
                            default="",
                            scope=Scope.content,
-                           help=_("Paste subtitles VVT"))
+                           help=_("Paste subtitles VTT"))
 
     # old fallback
     subtitle_url = String(display_name=_("Subtitle - URL - Polish"),

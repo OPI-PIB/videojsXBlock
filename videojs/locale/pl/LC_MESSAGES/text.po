@@ -137,7 +137,7 @@ msgid "Subtitle - Polish"
 msgstr "Napisy polskie"
 
 #: videojs.py:64
-msgid "Paste subtitles VVT"
+msgid "Paste subtitles VTT"
 msgstr "Wklej napisy w formacie VTT"
 
 #: videojs.py:67

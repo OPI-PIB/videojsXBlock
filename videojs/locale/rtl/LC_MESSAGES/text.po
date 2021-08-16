@@ -130,7 +130,7 @@ msgid "Subtitle - Polish"
 msgstr "Snbʇᴉʇlǝ - Ᵽølᴉsɥ"
 
 #: videojs.py
-msgid "Paste subtitles VVT"
+msgid "Paste subtitles VTT"
 msgstr "Ᵽɐsʇǝ snbʇᴉʇlǝs VVŦ"
 
 #: videojs.py

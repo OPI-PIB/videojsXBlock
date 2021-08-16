@@ -33,7 +33,7 @@
     "Language": "J\u0119zyk", 
     "Movie URL/ID": "Film URL lub ID", 
     "Paste VTT subtitles text": "Wklej napisy w formacie VTT", 
-    "Paste subtitles VVT": "Wklej napisy w formacie VTT", 
+    "Paste subtitles VTT": "Wklej napisy w formacie VTT",
     "Remove": "Usu\u0144", 
     "Save": "Zapisz", 
     "Subtitle - Polish": "Napisy polskie", 
