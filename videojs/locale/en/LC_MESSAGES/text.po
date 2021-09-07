@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-12-16 00:40+0100\n"
+"POT-Creation-Date: 2021-09-02 13:20+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -57,87 +57,777 @@ msgstr ""
 msgid "Cancel"
 msgstr ""
 
-#: videojs.py:34
-msgid "Polish"
-msgstr ""
-
-#: videojs.py:35
-msgid "English"
-msgstr ""
-
 #: videojs.py:36
-msgid "French"
+msgid "Afar"
 msgstr ""
 
 #: videojs.py:37
-msgid "Spanish"
+msgid "Abkhazian"
 msgstr ""
 
 #: videojs.py:38
-msgid "Russian"
+msgid "Afrikaans"
 msgstr ""
 
 #: videojs.py:39
-msgid "Chinese"
+msgid "Akan"
 msgstr ""
 
 #: videojs.py:40
-msgid "Portuguese"
+msgid "Albanian"
 msgstr ""
 
 #: videojs.py:41
-msgid "Czech"
+msgid "Amharic"
 msgstr ""
 
 #: videojs.py:42
-msgid "Slovak"
+msgid "Arabic"
 msgstr ""
 
 #: videojs.py:43
-msgid "Latvian"
+msgid "Aragonese"
 msgstr ""
 
 #: videojs.py:44
-msgid "Ukrainian"
+msgid "Armenian"
 msgstr ""
 
 #: videojs.py:45
-msgid "Belarusian"
+msgid "Assamese"
+msgstr ""
+
+#: videojs.py:46
+msgid "Avaric"
+msgstr ""
+
+#: videojs.py:47
+msgid "Avestan"
+msgstr ""
+
+#: videojs.py:48
+msgid "Aymara"
+msgstr ""
+
+#: videojs.py:49
+msgid "Azerbaijani"
+msgstr ""
+
+#: videojs.py:50
+msgid "Bashkir"
 msgstr ""
 
 #: videojs.py:51
-msgid "Display Name"
+msgid "Bambara"
 msgstr ""
 
 #: videojs.py:52
-msgid "Video JS"
+msgid "Basque"
+msgstr ""
+
+#: videojs.py:53
+msgid "Belarusian"
+msgstr ""
+
+#: videojs.py:54
+msgid "Bengali"
 msgstr ""
 
 #: videojs.py:55
-msgid "Youtube URL or Navoica movie ID"
+msgid "Bihari languages"
+msgstr ""
+
+#: videojs.py:56
+msgid "Bislama"
+msgstr ""
+
+#: videojs.py:57
+msgid "Tibetan"
 msgstr ""
 
 #: videojs.py:58
+msgid "Bosnian"
+msgstr ""
+
+#: videojs.py:59
+msgid "Breton"
+msgstr ""
+
+#: videojs.py:60
+msgid "Bulgarian"
+msgstr ""
+
+#: videojs.py:61
+msgid "Burmese"
+msgstr ""
+
+#: videojs.py:62
+msgid "Catalan; Valencian"
+msgstr ""
+
+#: videojs.py:63
+msgid "Czech"
+msgstr ""
+
+#: videojs.py:64
+msgid "Chamorro"
+msgstr ""
+
+#: videojs.py:65
+msgid "Chechen"
+msgstr ""
+
+#: videojs.py:66
+msgid "Chinese"
+msgstr ""
+
+#: videojs.py:67
+msgid ""
+"Church Slavic; Old Slavonic; Church Slavonic; Old Bulgarian; Old Church "
+"Slavonic"
+msgstr ""
+
+#: videojs.py:68
+msgid "Chuvash"
+msgstr ""
+
+#: videojs.py:69
+msgid "Cornish"
+msgstr ""
+
+#: videojs.py:70
+msgid "Corsican"
+msgstr ""
+
+#: videojs.py:71
+msgid "Cree"
+msgstr ""
+
+#: videojs.py:72
+msgid "Welsh"
+msgstr ""
+
+#: videojs.py:73
+msgid "Danish"
+msgstr ""
+
+#: videojs.py:74
+msgid "German"
+msgstr ""
+
+#: videojs.py:75
+msgid "Divehi; Dhivehi; Maldivian"
+msgstr ""
+
+#: videojs.py:76
+msgid "Dutch; Flemish"
+msgstr ""
+
+#: videojs.py:77
+msgid "Dzongkha"
+msgstr ""
+
+#: videojs.py:78
+msgid "Greek, Modern (1453-)"
+msgstr ""
+
+#: videojs.py:79
+msgid "English"
+msgstr ""
+
+#: videojs.py:80
+msgid "Esperanto"
+msgstr ""
+
+#: videojs.py:81
+msgid "Estonian"
+msgstr ""
+
+#: videojs.py:82
+msgid "Ewe"
+msgstr ""
+
+#: videojs.py:83
+msgid "Faroese"
+msgstr ""
+
+#: videojs.py:84
+msgid "Fijian"
+msgstr ""
+
+#: videojs.py:85
+msgid "Finnish"
+msgstr ""
+
+#: videojs.py:86
+msgid "French"
+msgstr ""
+
+#: videojs.py:87
+msgid "Western Frisian"
+msgstr ""
+
+#: videojs.py:88
+msgid "Fulah"
+msgstr ""
+
+#: videojs.py:89 videojs.py:119
+msgid "Georgian"
+msgstr ""
+
+#: videojs.py:90
+msgid "Gaelic; Scottish Gaelic"
+msgstr ""
+
+#: videojs.py:91
+msgid "Irish"
+msgstr ""
+
+#: videojs.py:92
+msgid "Galician"
+msgstr ""
+
+#: videojs.py:93
+msgid "Manx"
+msgstr ""
+
+#: videojs.py:94
+msgid "Guarani"
+msgstr ""
+
+#: videojs.py:95
+msgid "Gujarati"
+msgstr ""
+
+#: videojs.py:96
+msgid "Haitian; Haitian Creole"
+msgstr ""
+
+#: videojs.py:97
+msgid "Hausa"
+msgstr ""
+
+#: videojs.py:98
+msgid "Hebrew"
+msgstr ""
+
+#: videojs.py:99
+msgid "Herero"
+msgstr ""
+
+#: videojs.py:100
+msgid "Hindi"
+msgstr ""
+
+#: videojs.py:101
+msgid "Hiri Motu"
+msgstr ""
+
+#: videojs.py:102
+msgid "Croatian"
+msgstr ""
+
+#: videojs.py:103
+msgid "Hungarian"
+msgstr ""
+
+#: videojs.py:104
+msgid "Igbo"
+msgstr ""
+
+#: videojs.py:105
+msgid "Icelandic"
+msgstr ""
+
+#: videojs.py:106
+msgid "Ido"
+msgstr ""
+
+#: videojs.py:107
+msgid "Sichuan Yi; Nuosu"
+msgstr ""
+
+#: videojs.py:108
+msgid "Inuktitut"
+msgstr ""
+
+#: videojs.py:109
+msgid "Interlingue; Occidental"
+msgstr ""
+
+#: videojs.py:110
+msgid "Interlingua (International Auxiliary Language Association)"
+msgstr ""
+
+#: videojs.py:111
+msgid "Indonesian"
+msgstr ""
+
+#: videojs.py:112
+msgid "Inupiaq"
+msgstr ""
+
+#: videojs.py:113
+msgid "Italian"
+msgstr ""
+
+#: videojs.py:114
+msgid "Javanese"
+msgstr ""
+
+#: videojs.py:115
+msgid "Japanese"
+msgstr ""
+
+#: videojs.py:116
+msgid "Kalaallisut; Greenlandic"
+msgstr ""
+
+#: videojs.py:117
+msgid "Kannada"
+msgstr ""
+
+#: videojs.py:118
+msgid "Kashmiri"
+msgstr ""
+
+#: videojs.py:120
+msgid "Kanuri"
+msgstr ""
+
+#: videojs.py:121
+msgid "Kazakh"
+msgstr ""
+
+#: videojs.py:122
+msgid "Central Khmer"
+msgstr ""
+
+#: videojs.py:123
+msgid "Kikuyu; Gikuyu"
+msgstr ""
+
+#: videojs.py:124
+msgid "Kinyarwanda"
+msgstr ""
+
+#: videojs.py:125
+msgid "Kirghiz; Kyrgyz"
+msgstr ""
+
+#: videojs.py:126
+msgid "Komi"
+msgstr ""
+
+#: videojs.py:127
+msgid "Kongo"
+msgstr ""
+
+#: videojs.py:128
+msgid "Korean"
+msgstr ""
+
+#: videojs.py:129
+msgid "Kuanyama; Kwanyama"
+msgstr ""
+
+#: videojs.py:130
+msgid "Kurdish"
+msgstr ""
+
+#: videojs.py:131
+msgid "Lao"
+msgstr ""
+
+#: videojs.py:132
+msgid "Latin"
+msgstr ""
+
+#: videojs.py:133
+msgid "Latvian"
+msgstr ""
+
+#: videojs.py:134
+msgid "Limburgan; Limburger; Limburgish"
+msgstr ""
+
+#: videojs.py:135
+msgid "Lingala"
+msgstr ""
+
+#: videojs.py:136
+msgid "Lithuanian"
+msgstr ""
+
+#: videojs.py:137
+msgid "Luxembourgish; Letzeburgesch"
+msgstr ""
+
+#: videojs.py:138
+msgid "Luba-Katanga"
+msgstr ""
+
+#: videojs.py:139
+msgid "Ganda"
+msgstr ""
+
+#: videojs.py:140
+msgid "Macedonian"
+msgstr ""
+
+#: videojs.py:141
+msgid "Marshallese"
+msgstr ""
+
+#: videojs.py:142
+msgid "Malayalam"
+msgstr ""
+
+#: videojs.py:143
+msgid "Maori"
+msgstr ""
+
+#: videojs.py:144
+msgid "Marathi"
+msgstr ""
+
+#: videojs.py:145
+msgid "Malay"
+msgstr ""
+
+#: videojs.py:146
+msgid "Micmac"
+msgstr ""
+
+#: videojs.py:147
+msgid "Malagasy"
+msgstr ""
+
+#: videojs.py:148
+msgid "Maltese"
+msgstr ""
+
+#: videojs.py:149
+msgid "Mongolian"
+msgstr ""
+
+#: videojs.py:150
+msgid "Nauru"
+msgstr ""
+
+#: videojs.py:151
+msgid "Navajo; Navaho"
+msgstr ""
+
+#: videojs.py:152
+msgid "Ndebele, South; South Ndebele"
+msgstr ""
+
+#: videojs.py:153
+msgid "Ndebele, North; North Ndebele"
+msgstr ""
+
+#: videojs.py:154
+msgid "Ndonga"
+msgstr ""
+
+#: videojs.py:155
+msgid "Nepali"
+msgstr ""
+
+#: videojs.py:156
+msgid "Norwegian Nynorsk; Nynorsk, Norwegian"
+msgstr ""
+
+#: videojs.py:157
+msgid "Bokmål, Norwegian; Norwegian Bokmål"
+msgstr ""
+
+#: videojs.py:158
+msgid "Norwegian"
+msgstr ""
+
+#: videojs.py:159
+msgid "Occitan (post 1500)"
+msgstr ""
+
+#: videojs.py:160
+msgid "Ojibwa"
+msgstr ""
+
+#: videojs.py:161
+msgid "Oriya"
+msgstr ""
+
+#: videojs.py:162
+msgid "Oromo"
+msgstr ""
+
+#: videojs.py:163
+msgid "Ossetian; Ossetic"
+msgstr ""
+
+#: videojs.py:164
+msgid "Panjabi; Punjabi"
+msgstr ""
+
+#: videojs.py:165
+msgid "Persian"
+msgstr ""
+
+#: videojs.py:166
+msgid "Pali"
+msgstr ""
+
+#: videojs.py:167
+msgid "Polish"
+msgstr ""
+
+#: videojs.py:168
+msgid "Portuguese"
+msgstr ""
+
+#: videojs.py:169
+msgid "Pushto; Pashto"
+msgstr ""
+
+#: videojs.py:170
+msgid "Quechua"
+msgstr ""
+
+#: videojs.py:171
+msgid "Romansh"
+msgstr ""
+
+#: videojs.py:172
+msgid "Romanian; Moldavian; Moldovan"
+msgstr ""
+
+#: videojs.py:173
+msgid "Rundi"
+msgstr ""
+
+#: videojs.py:174
+msgid "Russian"
+msgstr ""
+
+#: videojs.py:175
+msgid "Sango"
+msgstr ""
+
+#: videojs.py:176
+msgid "Sanskrit"
+msgstr ""
+
+#: videojs.py:177
+msgid "Sinhala; Sinhalese"
+msgstr ""
+
+#: videojs.py:178
+msgid "Slovak"
+msgstr ""
+
+#: videojs.py:179
+msgid "Slovenian"
+msgstr ""
+
+#: videojs.py:180
+msgid "Northern Sami"
+msgstr ""
+
+#: videojs.py:181
+msgid "Samoan"
+msgstr ""
+
+#: videojs.py:182
+msgid "Shona"
+msgstr ""
+
+#: videojs.py:183
+msgid "Sindhi"
+msgstr ""
+
+#: videojs.py:184
+msgid "Somali"
+msgstr ""
+
+#: videojs.py:185
+msgid "Sotho, Southern"
+msgstr ""
+
+#: videojs.py:186
+msgid "Spanish; Castilian"
+msgstr ""
+
+#: videojs.py:187
+msgid "Sardinian"
+msgstr ""
+
+#: videojs.py:188
+msgid "Serbian"
+msgstr ""
+
+#: videojs.py:189
+msgid "Swati"
+msgstr ""
+
+#: videojs.py:190
+msgid "Sundanese"
+msgstr ""
+
+#: videojs.py:191
+msgid "Swahili"
+msgstr ""
+
+#: videojs.py:192
+msgid "Swedish"
+msgstr ""
+
+#: videojs.py:193
+msgid "Tahitian"
+msgstr ""
+
+#: videojs.py:194
+msgid "Tamil"
+msgstr ""
+
+#: videojs.py:195
+msgid "Tatar"
+msgstr ""
+
+#: videojs.py:196
+msgid "Telugu"
+msgstr ""
+
+#: videojs.py:197
+msgid "Tajik"
+msgstr ""
+
+#: videojs.py:198
+msgid "Tagalog"
+msgstr ""
+
+#: videojs.py:199
+msgid "Thai"
+msgstr ""
+
+#: videojs.py:200
+msgid "Tigrinya"
+msgstr ""
+
+#: videojs.py:201
+msgid "Tonga (Tonga Islands)"
+msgstr ""
+
+#: videojs.py:202
+msgid "Tswana"
+msgstr ""
+
+#: videojs.py:203
+msgid "Tsonga"
+msgstr ""
+
+#: videojs.py:204
+msgid "Turkmen"
+msgstr ""
+
+#: videojs.py:205
+msgid "Turkish"
+msgstr ""
+
+#: videojs.py:206
+msgid "Twi"
+msgstr ""
+
+#: videojs.py:207
+msgid "Uighur; Uyghur"
+msgstr ""
+
+#: videojs.py:208
+msgid "Ukrainian"
+msgstr ""
+
+#: videojs.py:209
+msgid "Urdu"
+msgstr ""
+
+#: videojs.py:210
+msgid "Uzbek"
+msgstr ""
+
+#: videojs.py:211
+msgid "Venda"
+msgstr ""
+
+#: videojs.py:212
+msgid "Vietnamese"
+msgstr ""
+
+#: videojs.py:213
+msgid "Volapük"
+msgstr ""
+
+#: videojs.py:214
+msgid "Walloon"
+msgstr ""
+
+#: videojs.py:215
+msgid "Wolof"
+msgstr ""
+
+#: videojs.py:216
+msgid "Xhosa"
+msgstr ""
+
+#: videojs.py:217
+msgid "Yiddish"
+msgstr ""
+
+#: videojs.py:218
+msgid "Yoruba"
+msgstr ""
+
+#: videojs.py:219
+msgid "Zhuang; Chuang"
+msgstr ""
+
+#: videojs.py:220
+msgid "Zulu"
+msgstr ""
+
+#: videojs.py:226
+msgid "Display Name"
+msgstr ""
+
+#: videojs.py:227
+msgid "Video JS"
+msgstr ""
+
+#: videojs.py:230
+msgid "Youtube URL or Navoica movie ID"
+msgstr ""
+
+#: videojs.py:233
 msgid ""
 "Enter url from website youtube.com or use id number previously uploaded movie"
 msgstr ""
 
-#: videojs.py:61
+#: videojs.py:236
 msgid "Subtitle - Polish"
 msgstr ""
 
-#: videojs.py:64
+#: videojs.py:239
 msgid "Paste subtitles VTT"
 msgstr ""
 
-#: videojs.py:67
+#: videojs.py:242
 msgid "Subtitle - URL - Polish"
 msgstr ""
 
-#: videojs.py:72
+#: videojs.py:247
 msgid "Subtitles RAW"
 msgstr ""
 
-#: videojs.py:77
+#: videojs.py:252
 msgid "Subtitles URL"
 msgstr ""
