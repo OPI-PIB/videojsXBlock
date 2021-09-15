@@ -19,6 +19,8 @@ import json
 import hashlib
 from django.utils import translation
 from six import text_type
+from django.core.files.storage import default_storage
+from django.core.files.base import ContentFile
 
 _ = lambda text: text
 loader = ResourceLoader(__name__)
@@ -232,18 +234,6 @@ class videojsXBlock(XBlock):
                  scope=Scope.content,
                  help=_("Enter url from website youtube.com or use id number previously uploaded movie"))
 
-    # old fallback
-    subtitle_text = String(display_name=_("Subtitle - Polish"),
-                           default="",
-                           scope=Scope.content,
-                           help=_("Paste subtitles VTT"))
-
-    # old fallback
-    subtitle_url = String(display_name=_("Subtitle - URL - Polish"),
-                          default="",
-                          scope=Scope.content,
-                          help="")
-
     subtitles = Dict(display_name=_("Subtitles RAW"),
                      default={},
                      scope=Scope.content
@@ -285,10 +275,6 @@ class videojsXBlock(XBlock):
             if file:
                 subtitles_url[lang] = file
 
-        if len(subtitles_url.get("pl", "")) == 0 and self.subtitle_url:
-            """Stara wersja zawierala jedynie napisy w jezyku PL. Dlatego musimy byc wsteczni kompatybilni"""
-            subtitles_url['pl'] = self.subtitle_url
-
         frag = Fragment()
 
         context = {
@@ -317,19 +303,6 @@ class videojsXBlock(XBlock):
         return frag
 
     def studio_view(self, context=None):
-
-        if not 'pl' in self.subtitles and self.subtitle_url:
-            if os.path.isfile(self.subtitle_url):
-                with open(self.subtitle_url, 'r') as f:
-                    data = f.read()
-                    self.subtitles['pl'] = data
-            elif self.subtitle_text:
-                reader = detect_format(self.subtitle_text)
-                if reader:
-                    subtitle = WebVTTWriter().write(reader().read(self.subtitle_text))
-                    h = HTMLParser()
-                    self.subtitles['pl'] = h.unescape(subtitle)
-                    self.create_subtitles_file(self.subtitles['pl'])
 
         languages_subtitles = {code: {'name': self.languages[code], 'subtitle': self.subtitles.get(code, '')} for code
                                in
@@ -380,33 +353,17 @@ class videojsXBlock(XBlock):
                         {'error': i18n_(
                             "Error occurred while saving VTT subtitles for language %s") % language.upper()}),
                         status=400, content_type='application/json', charset='utf8')
-            else:
-                self.subtitles[language] = ""
-                # We need to remove the old url for Polish subtitles so that they will not be re-imported
-                if language == 'pl' and self.subtitle_url:
-                    self.subtitle_url = None
 
         return {'result': 'success'}
 
     def create_subtitles_file(self, subtitle_text):
         if subtitle_text:
-            path = settings.MEDIA_ROOT + 'subtitles/'
-            if not os.path.exists(path):
-                os.makedirs(path)
-
             name = hashlib.sha256(subtitle_text.encode("utf-8")).hexdigest() + ".vtt"
-            filepath = path + name
-            url = settings.MEDIA_URL + 'subtitles/' + name
+            path = 'subtitles/' + name
 
-            if not os.path.isfile(filepath):
-                try:
-                    f = codecs.open(filepath, 'w', 'utf-8')
-                    f.write(subtitle_text)
-                    f.close()
-                except IOError:
-                    return None
-            return url
-        return None
+            if not default_storage.exists(path):
+                return default_storage.save(path, ContentFile(subtitle_text))
+            return default_storage.url(path)
 
     def resource_string(self, path):
         data = pkg_resources.resource_string(__name__, path)
