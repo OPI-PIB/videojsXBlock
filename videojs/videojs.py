@@ -362,7 +362,7 @@ class videojsXBlock(XBlock):
             path = 'subtitles/' + name
 
             if not default_storage.exists(path):
-                return default_storage.save(path, ContentFile(subtitle_text))
+                return default_storage.save(path, ContentFile(subtitle_text.encode("utf-8")))
             return default_storage.url(path)
 
     def resource_string(self, path):
