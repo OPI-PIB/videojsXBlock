@@ -1,6 +1,7 @@
 """ videojsXBlock main Python class"""
 
 import codecs
+import copy
 import os
 import uuid
 from html.parser import HTMLParser
@@ -234,6 +235,18 @@ class videojsXBlock(XBlock):
                  scope=Scope.content,
                  help=_("Enter url from website youtube.com or use id number previously uploaded movie"))
 
+    # old fallback
+    subtitle_text = String(display_name=_("Subtitle - Polish"),
+                           default="",
+                           scope=Scope.content,
+                           help=_("Paste subtitles VTT"))
+
+    # old fallback
+    subtitle_url = String(display_name=_("Subtitle - URL - Polish"),
+                          default="",
+                          scope=Scope.content,
+                          help="")
+
     subtitles = Dict(display_name=_("Subtitles RAW"),
                      default={},
                      scope=Scope.content
@@ -269,8 +282,9 @@ class videojsXBlock(XBlock):
         when viewing courses.
         """
 
+        subtitles = self.transform_old_subtitle_to_new_form_if_exist(modify=False)
         subtitles_url = {}
-        for lang, subtitle_text in dict(self.subtitles).items():
+        for lang, subtitle_text in dict(subtitles).items():
             file = self.create_subtitles_file(subtitle_text)
             if file:
                 subtitles_url[lang] = file
@@ -304,6 +318,7 @@ class videojsXBlock(XBlock):
 
     def studio_view(self, context=None):
 
+        self.transform_old_subtitle_to_new_form_if_exist(modify=True)
         languages_subtitles = {code: {'name': self.languages[code], 'subtitle': self.subtitles.get(code, '')} for code
                                in
                                self.languages.keys()}
@@ -376,3 +391,23 @@ class videojsXBlock(XBlock):
             ))
         except IOError:
             return self.resource_string('static/js/translations/en/text.js')
+
+    def transform_old_subtitle_to_new_form_if_exist(self, modify=False):
+        """
+        It is possible to modify self.subtitles only in studio_view and save_videojs functions, so in studio_view we only dynamically modify
+        self.subtitles dict, but in studio_view pernamently.
+        """
+        subtitles = copy.deepcopy(self.subtitles)
+        if (not 'pl' in self.subtitles) and self.subtitle_url and self.subtitle_text:
+            reader = detect_format(self.subtitle_text)
+            if reader:
+                subtitle = WebVTTWriter().write(reader().read(self.subtitle_text))
+                h = HTMLParser()
+                subtitles['pl'] = h.unescape(subtitle)
+                if modify:
+                    self.subtitles = subtitles
+                    self.subtitle_url = self.subtitle_text = ""
+                else:
+                    return subtitles
+        else:
+            return subtitles
