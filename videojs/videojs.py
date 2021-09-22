@@ -358,7 +358,13 @@ class videojsXBlock(XBlock):
             if subtitle_text:
                 reader = detect_format(subtitle_text)
                 if reader:
-                    subtitle = WebVTTWriter().write(reader().read(subtitle_text))
+                    try:
+                        subtitle = WebVTTWriter().write(reader().read(self.subtitle_text))
+                    except:
+                        return Response(json.dumps(
+                                    {'error': i18n_(
+                            "Error occurred while saving VTT subtitles for language %s") % language.upper()}),
+                        status=400, content_type='application/json', charset='utf8')
                     h = HTMLParser()
                     self.subtitles[language] = h.unescape(subtitle)
 
@@ -377,7 +383,7 @@ class videojsXBlock(XBlock):
             path = 'subtitles/' + name
 
             if not default_storage.exists(path):
-                return default_storage.save(path, ContentFile(subtitle_text.encode("utf-8")))
+                default_storage.save(path, ContentFile(subtitle_text.encode("utf-8")))
             return default_storage.url(path)
 
     def resource_string(self, path):
@@ -397,11 +403,18 @@ class videojsXBlock(XBlock):
         It is possible to modify self.subtitles only in studio_view and save_videojs functions, so in studio_view we only dynamically modify
         self.subtitles dict, but in studio_view pernamently.
         """
+        i18n_ = self.runtime.service(self, "i18n").ugettext
         subtitles = copy.deepcopy(self.subtitles)
         if (not 'pl' in self.subtitles) and self.subtitle_url and self.subtitle_text:
             reader = detect_format(self.subtitle_text)
             if reader:
-                subtitle = WebVTTWriter().write(reader().read(self.subtitle_text))
+                try:
+                    subtitle = WebVTTWriter().write(reader().read(self.subtitle_text))
+                except:
+                    return Response(json.dumps(
+                                {'error': i18n_(
+                                    "Error occurred while saving VTT subtitles for language PL")}),
+                                status=400, content_type='application/json', charset='utf8')
                 h = HTMLParser()
                 subtitles['pl'] = h.unescape(subtitle)
                 if modify:
@@ -409,5 +422,10 @@ class videojsXBlock(XBlock):
                     self.subtitle_url = self.subtitle_text = ""
                 else:
                     return subtitles
+            else:
+                return Response(json.dumps(
+                    {'error': i18n_(
+                        "Error occurred while saving VTT subtitles for language PL")}),
+                    status=400, content_type='application/json', charset='utf8')
         else:
             return subtitles
