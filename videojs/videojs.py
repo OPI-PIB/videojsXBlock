@@ -359,7 +359,7 @@ class videojsXBlock(XBlock):
                 reader = detect_format(subtitle_text)
                 if reader:
                     try:
-                        subtitle = WebVTTWriter().write(reader().read(self.subtitle_text))
+                        subtitle = WebVTTWriter().write(reader().read(subtitle_text))
                     except:
                         return Response(json.dumps(
                                     {'error': i18n_(
