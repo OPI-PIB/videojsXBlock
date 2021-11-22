@@ -1,8 +1,15 @@
 /* Javascript for videojsXBlock. */
 function videojsXBlockInitStudio(runtime, element) {
-
-
-    $(".subtitle_text",element).each(function() {
+    var language_list = $(".subtitle_text",element)
+    language_list.sort((a,b) => { 
+        
+        if ($(a).data("code") === 'en') return -1;
+        if ($(b).data("code") === 'en') return 1;
+        
+        return $(a).data("language").localeCompare($(b).data("language"))
+    });
+    
+    language_list.each(function() {
       if(!$(this).val().trim().length && $(this).attr("data-code") !== 'pl')
       {
           $("#select_add_language").append(new Option($(this).attr("data-language"), $(this).attr("data-code")));
