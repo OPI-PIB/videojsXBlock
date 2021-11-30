@@ -9,7 +9,8 @@ function videojsXBlockInitView(runtime, element) {
     var video = element.find('video:first');
     var player = videojs(video.get(0), {
         language: 'pl',
-        textTrackSettings: false
+        textTrackSettings: false,
+        playbackRates: [0.5, 1, 1.5, 2]
     });
 
     function UrlExists(url) {
