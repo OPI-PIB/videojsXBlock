@@ -1,7 +1,7 @@
 {% load i18n %}
 <div class="videojs_block">
     <h2>{{ display_name }}</h2>
-    <video oncontextmenu="return false;" class="video-js vjs-fluid" controls data-setup='{"language":"pl"}'
+    <video oncontextmenu="return false;" class="video-js vjs-fluid" controls data-setup='{"language":"pl", "playbackRates": [0.5, 1, 1.5, 2]}'
            id="{{ uid }}"
            preload="auto">
         {% if 'youtube' in url or 'youtu.be' in url %}
