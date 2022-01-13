@@ -10547,7 +10547,7 @@
 
         var boxPositions = [],
             containerBox = BoxPosition.getSimpleBoxPosition(paddedOverlay),
-            fontSize = 16.0;
+            fontSize = 25.0;
             //fontSize = Math.round(containerBox.height * FONT_SIZE_PERCENT * 100) / 100;
         var styleOptions = {
             font: fontSize + "px " + FONT_STYLE
