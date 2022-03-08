@@ -374,6 +374,8 @@ class videojsXBlock(XBlock):
                         {'error': i18n_(
                             "Error occurred while saving VTT subtitles for language %s") % language.upper()}),
                         status=400, content_type='application/json', charset='utf8')
+            else:
+                self.subtitles[language] = ""
 
         return {'result': 'success'}
 
