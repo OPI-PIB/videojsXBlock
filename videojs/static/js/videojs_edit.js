@@ -8,7 +8,7 @@ function videojsXBlockInitStudio(runtime, element) {
         
         return $(a).data("language").localeCompare($(b).data("language"))
     });
-    
+
     language_list.each(function() {
       if(!$(this).val().trim().length && $(this).attr("data-code") !== 'pl')
       {
@@ -16,6 +16,15 @@ function videojsXBlockInitStudio(runtime, element) {
           $(this).parents(".field").hide();
       }
     });
+    subtitle_elements=$(".wrapper-subtitles").children();
+    subtitle_elements.sort((a,b) => { 
+        
+        if ($(a).attr('id') === 'lang-pl') return -1;
+        if ($(b).attr('id') === 'lang-pl') return 1;
+        
+        return $(a).find(".subtitle-language").text().localeCompare($(b).find(".subtitle-language").text())
+    });
+    $(".wrapper-subtitles").append(subtitle_elements);
 
     $("#add_lang_btn").click(function (){
         var code = $("#select_add_language").val();
