@@ -22,6 +22,7 @@ from django.utils import translation
 from six import text_type
 from django.core.files.storage import default_storage
 from django.core.files.base import ContentFile
+from django.core.cache import cache
 
 _ = lambda text: text
 loader = ResourceLoader(__name__)
@@ -285,7 +286,7 @@ class videojsXBlock(XBlock):
         subtitles = self.transform_old_subtitle_to_new_form_if_exist(modify=False)
         subtitles_url = {}
         for lang, subtitle_text in dict(subtitles).items():
-            file = self.create_subtitles_file(subtitle_text)
+            file = self.create_subtitles_file(subtitle_text, check_exists=False)
             if file:
                 subtitles_url[lang] = file
 
@@ -362,9 +363,9 @@ class videojsXBlock(XBlock):
                         subtitle = WebVTTWriter().write(reader().read(subtitle_text))
                     except:
                         return Response(json.dumps(
-                                    {'error': i18n_(
-                            "Error occurred while saving VTT subtitles for language %s") % language.upper()}),
-                        status=400, content_type='application/json', charset='utf8')
+                            {'error': i18n_(
+                                "Error occurred while saving VTT subtitles for language %s") % language.upper()}),
+                            status=400, content_type='application/json', charset='utf8')
                     h = HTMLParser()
                     self.subtitles[language] = h.unescape(subtitle)
 
@@ -379,13 +380,14 @@ class videojsXBlock(XBlock):
 
         return {'result': 'success'}
 
-    def create_subtitles_file(self, subtitle_text):
+    def create_subtitles_file(self, subtitle_text, check_exists=True):
         if subtitle_text:
             name = hashlib.sha256(subtitle_text.encode("utf-8")).hexdigest() + ".vtt"
             path = 'subtitles/' + name
 
-            if not default_storage.exists(path):
-                default_storage.save(path, ContentFile(subtitle_text.encode("utf-8")))
+            if check_exists:
+                if not default_storage.exists(path):
+                    default_storage.save(path, ContentFile(subtitle_text.encode("utf-8")))
             return default_storage.url(path)
 
     def resource_string(self, path):
@@ -414,9 +416,9 @@ class videojsXBlock(XBlock):
                     subtitle = WebVTTWriter().write(reader().read(self.subtitle_text))
                 except:
                     return Response(json.dumps(
-                                {'error': i18n_(
-                                    "Error occurred while saving VTT subtitles for language PL")}),
-                                status=400, content_type='application/json', charset='utf8')
+                        {'error': i18n_(
+                            "Error occurred while saving VTT subtitles for language PL")}),
+                        status=400, content_type='application/json', charset='utf8')
                 h = HTMLParser()
                 subtitles['pl'] = h.unescape(subtitle)
                 if modify:
