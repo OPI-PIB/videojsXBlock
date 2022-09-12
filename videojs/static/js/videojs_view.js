@@ -60,8 +60,9 @@ function videojsXBlockInitView(runtime, element) {
             sources: checked_source,
             formats: formats,
             onFormatSelected: function (format) {
-                console.log(format);
-            }
+                console.log(format.code);
+                window.localStorage.setItem('videojs_format', format.code);
+            },
         });
 
     }
