@@ -244,7 +244,15 @@
 
                             this.player.addClass('vjs-qualityselector');
 
-                            this.onQualitySelect(options.formats[0]);
+                            var formatIndex = options.formats.findIndex(function (element) {
+                                return element.code === window.localStorage.getItem('videojs_format');
+                            });
+
+                            if (formatIndex === -1) {
+                                this.onQualitySelect(options.formats[0]);
+                            } else {
+                                this.onQualitySelect(options.formats[formatIndex]);
+                            }
                             this.onToggleDropdown();
                         }
                     }]);
