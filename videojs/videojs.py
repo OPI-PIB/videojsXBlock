@@ -317,6 +317,15 @@ class videojsXBlock(XBlock):
         frag.initialize_js('videojsXBlockInitView')
         return frag
 
+    @staticmethod
+    def workbench_scenarios():
+        """A canned scenario for display in the workbench."""
+        return [
+            ("VideoJsXBlock",
+             """<videojs/>
+             """),
+        ]
+
     def studio_view(self, context=None):
 
         self.transform_old_subtitle_to_new_form_if_exist(modify=True)
