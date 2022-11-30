@@ -24,7 +24,7 @@ setup(
     ],
     install_requires=[
         'XBlock',
-        'pycaption==2.0.9'
+        'pycaption==2.1.0'
     ],
     entry_points={
         'xblock.v1': [
