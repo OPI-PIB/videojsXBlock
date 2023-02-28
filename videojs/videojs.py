@@ -297,6 +297,7 @@ class videojsXBlock(XBlock):
             'url': self.url,
             'uid': uuid.uuid4().hex,
             'subtitles_url': subtitles_url,
+            'cdn_url': self.get_xblock_settings()['CDN_URL']
         }
 
         frag.add_content(loader.render_django_template(
