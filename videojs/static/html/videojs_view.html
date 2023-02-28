@@ -9,7 +9,7 @@
                 type="video/youtube"/>
         {% else %}
         <source
-                src="https://do.navoica.pl/OPI_public_1%2F{{ url }}"
+                src="{{cdn_url}}{{ url }}"
                 type="video/mp4"/>
         {% endif %}
         <p class="vjs-no-js">{% trans "To view this video, please enable JavaScript and consider upgrading to a web
