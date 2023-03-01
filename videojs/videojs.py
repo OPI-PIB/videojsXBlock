@@ -23,6 +23,7 @@ from six import text_type
 from django.core.files.storage import default_storage
 from django.core.files.base import ContentFile
 from django.core.cache import cache
+from xblockutils.settings import XBlockWithSettingsMixin
 
 _ = lambda text: text
 loader = ResourceLoader(__name__)
@@ -30,7 +31,8 @@ loader = ResourceLoader(__name__)
 
 @XBlock.needs('i18n')
 @XBlock.wants('completion')
-class videojsXBlock(XBlock):
+@XBlock.needs('settings')
+class videojsXBlock(XBlockWithSettingsMixin, XBlock):
     '''
     Icon of the XBlock. Values : [other (default), video, problem]
     '''
