@@ -24,8 +24,16 @@ from django.core.files.storage import default_storage
 from django.core.files.base import ContentFile
 from django.core.cache import cache
 from xblockutils.settings import XBlockWithSettingsMixin
+from navoica_api.videos import path_to_resolution
+from navoica_api.videos.storage import VideoAzureStorage, RawVideoAzureStorage
 
-_ = lambda text: text
+videos_storage = VideoAzureStorage()
+raw_videos_storage = RawVideoAzureStorage()
+
+
+def _(text): return text
+
+
 loader = ResourceLoader(__name__)
 
 
@@ -285,21 +293,45 @@ class videojsXBlock(XBlockWithSettingsMixin, XBlock):
         when viewing courses.
         """
 
-        subtitles = self.transform_old_subtitle_to_new_form_if_exist(modify=False)
+        subtitles = self.transform_old_subtitle_to_new_form_if_exist(
+            modify=False)
         subtitles_url = {}
         for lang, subtitle_text in dict(subtitles).items():
-            file = self.create_subtitles_file(subtitle_text, check_exists=False)
+            file = self.create_subtitles_file(
+                subtitle_text, check_exists=False)
             if file:
                 subtitles_url[lang] = file
+
+        video_urls = []
+
+        if 'youtube' in self.url or 'youtu.be' in self.url:
+            video_urls.append({
+                'src': self.url,
+                'type': "video/youtube"
+            })
+        else:
+            for resolution in settings.VIDEO_RESOLUTIONS:
+                path = path_to_resolution(
+                    resolution=resolution, video_id=self.url)
+                if videos_storage.exists(path):
+                    video_urls.append({
+                        'src': videos_storage.url(path),
+                        'type': "video/mp4",
+                        'label': resolution,
+                    })
+            if len(video_urls) == 0:
+                video_urls.append({
+                    'src': raw_videos_storage.url(self.url),
+                    'type': "video/mp4"
+                })
 
         frag = Fragment()
 
         context = {
             'display_name': self.display_name,
-            'url': self.url,
+            'video_urls': video_urls,
             'uid': uuid.uuid4().hex,
             'subtitles_url': subtitles_url,
-            'cdn_url': self.get_xblock_settings()['CDN_URL']
         }
 
         frag.add_content(loader.render_django_template(
@@ -312,7 +344,8 @@ class videojsXBlock(XBlockWithSettingsMixin, XBlock):
         frag.add_css(loader.load_unicode("static/css/qualityselector.css"))
         frag.add_javascript(loader.load_unicode("static/js/video.js"))
         frag.add_javascript(loader.load_unicode("static/js/pl.js"))
-        frag.add_javascript(loader.load_unicode("static/js/qualityselector.js"))
+        frag.add_javascript(loader.load_unicode(
+            "static/js/qualityselector.js"))
         frag.add_javascript(loader.load_unicode("static/js/youtube.js"))
         frag.add_javascript(loader.load_unicode("static/js/videojs_view.js"))
         frag.add_javascript(self.get_translation_content())
@@ -394,12 +427,14 @@ class videojsXBlock(XBlockWithSettingsMixin, XBlock):
 
     def create_subtitles_file(self, subtitle_text, check_exists=True):
         if subtitle_text:
-            name = hashlib.sha256(subtitle_text.encode("utf-8")).hexdigest() + ".vtt"
+            name = hashlib.sha256(subtitle_text.encode(
+                "utf-8")).hexdigest() + ".vtt"
             path = 'subtitles/' + name
 
             if check_exists:
                 if not default_storage.exists(path):
-                    default_storage.save(path, ContentFile(subtitle_text.encode("utf-8")))
+                    default_storage.save(path, ContentFile(
+                        subtitle_text.encode("utf-8")))
             return default_storage.url(path)
 
     def resource_string(self, path):

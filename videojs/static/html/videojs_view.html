@@ -4,14 +4,11 @@
     <video oncontextmenu="return false;" class="video-js vjs-fluid" controls data-setup='{"language":"pl", "playbackRates": [0.5, 1, 1.5, 2]}'
            id="{{ uid }}"
            preload="auto">
-        {% if 'youtube' in url or 'youtu.be' in url %}
-        <source src="{{ url }}"
-                type="video/youtube"/>
-        {% else %}
-        <source
-                src="{{cdn_url}}{{ url }}"
-                type="video/mp4"/>
-        {% endif %}
+
+        {% for video_url in video_urls %}
+        <source src="{{video_url.src}}" type="{{video_url.type}}" {% if forloop.first %}selected="true"{% endif %} label="{{video_url.label|default:'auto'}}"/>
+        {% endfor %}
+
         <p class="vjs-no-js">{% trans "To view this video, please enable JavaScript and consider upgrading to a web
             browser that supports HTML5 video" %}</p>
         {% for lang, url in subtitles_url.items %}
