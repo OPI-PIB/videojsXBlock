@@ -25,10 +25,10 @@ from django.core.files.base import ContentFile
 from django.core.cache import cache
 from xblockutils.settings import XBlockWithSettingsMixin
 from navoica_api.videos import path_to_resolution
-from navoica_api.videos.storage import VideoAzureStorage, RawVideoAzureStorage
+from navoica_api.videos.storage import VideoS3Storage, RawVideoS3Storage
 
-videos_storage = VideoAzureStorage()
-raw_videos_storage = RawVideoAzureStorage()
+videos_storage = VideoS3Storage()
+raw_videos_storage = RawVideoS3Storage()
 
 
 def _(text): return text
